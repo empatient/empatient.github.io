@@ -1,3 +1,5 @@
+//Old File! Used in conjunction with html popup for webcam analysis. No longer important.
+
 var JSSDK = JSSDK || {};
 JSSDK.Assets = {
   "wasm": {
