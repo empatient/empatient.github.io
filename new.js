@@ -21,6 +21,15 @@ detector.detectAllEmotions();
 detector.detectAllEmojis();
 detector.detectAllAppearance();
 
+// Track smiles
+detector.detectExpressions.smile = true;
+
+// Track joy emotion
+detector.detectEmotions.joy = true;
+
+// Detect person's gender
+detector.detectAppearance.gender = true;
+
 detector.addEventListener("onInitializeSuccess", function() {});
 detector.addEventListener("onInitializeFailure", function() {});
 
@@ -70,3 +79,4 @@ var deltaTime = now - startTimestamp;
 detector.process(imageData, deltaTime);
 
 detector.stop();
+detector.reset();
