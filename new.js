@@ -1,5 +1,4 @@
-//Load Affectiva API
-<script type="text/javascript" src="https://download.affectiva.com/js/3.2.1/affdex.js"></script>
+<script src="https://download.affectiva.com/js/3.2.1/affdex.js"/>
 /*
    Face detector configuration - If not specified, defaults to F
    affdex.FaceDetectorMode.LARGE_FACES
@@ -60,27 +59,25 @@ detector.addEventListener("onStopFailure", function() {});
 var startButton = document.getElementById('start');
     startButton.addEventListener('click', function() {
       detector.start();
-      print("started!") 
+      //Get a canvas element from DOM
+      var aCanvas = document.getElementById("canvas");
+      var context = aCanvas.getContext('2d');
+
+      //Cache the timestamp of the first frame processed
+      var startTimestamp = (new Date()).getTime() / 1000;
+
+      //Get imageData object.
+      var imageData = context.getImageData(0, 0, 640, 480);
+
+      //Get current time in seconds
+      var now = (new Date()).getTime() / 1000;
+
+      //Get delta time between the first frame and the current frame.
+      var deltaTime = now - startTimestamp;
+
+      //Process the frame
+      detector.process(imageData, deltaTime);
     }, false);
-
-//Get a canvas element from DOM
-var aCanvas = document.getElementById("canvas");
-var context = aCanvas.getContext('2d');
-
-//Cache the timestamp of the first frame processed
-var startTimestamp = (new Date()).getTime() / 1000;
-
-//Get imageData object.
-var imageData = context.getImageData(0, 0, 640, 480);
-
-//Get current time in seconds
-var now = (new Date()).getTime() / 1000;
-
-//Get delta time between the first frame and the current frame.
-var deltaTime = now - startTimestamp;
-
-//Process the frame
-detector.process(imageData, deltaTime);
 
 var stopButton = document.getElementById('stop');
     stopButton.addEventListener('click', function() {
