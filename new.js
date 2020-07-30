@@ -57,7 +57,11 @@ detector.addEventListener("onResetFailure", function() {});
 detector.addEventListener("onStopSuccess", function() {});
 detector.addEventListener("onStopFailure", function() {});
 
-detector.start();
+var startButton = document.getElementById('start');
+    startButton.addEventListener('click', function() {
+      detector.start();
+      print("started!") 
+    }, false);
 
 //Get a canvas element from DOM
 var aCanvas = document.getElementById("canvas");
@@ -78,5 +82,8 @@ var deltaTime = now - startTimestamp;
 //Process the frame
 detector.process(imageData, deltaTime);
 
-detector.stop();
-detector.reset();
+var stopButton = document.getElementById('stop');
+    stopButton.addEventListener('click', function() {
+      detector.stop();
+      detector.reset(); 
+    }, false);
