@@ -8,8 +8,13 @@
 */
 var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
 
+//Demo values of width and height for the frame
+
+var width = 640;
+var height = 480;
+
 //Construct a FrameDetector and specify the image width / height and face detector mode.
-var detector = new affdex.FrameDetector(faceMode);
+var detector = new affdex.FrameDetector(width, height, faceMode);
 
 detector.detectAllExpressions();
 detector.detectAllEmotions();
