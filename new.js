@@ -1,6 +1,5 @@
-
-<script src="https://download.affectiva.com/js/3.2.1/affdex.js"/>
-
+//Load Affectiva API
+<script type="text/javascript" src="https://download.affectiva.com/js/3.2.1/affdex.js"></script>
 /*
    Face detector configuration - If not specified, defaults to F
    affdex.FaceDetectorMode.LARGE_FACES
