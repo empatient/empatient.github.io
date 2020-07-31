@@ -37,34 +37,6 @@ function log(node_name, msg) {
   document.querySelector(node_name).innerHTML += "<span>" + msg + "</span><br />";
 }
 
-//function executes when Start button is pushed.
-function onStart() {
-  if (detector && !detector.isRunning) {
-    document.querySelector("#logs").innerHTML = "";
-    detector.start(JSSDK.Assets.wasm);
-  }
-  log('#logs', "Clicked the start button");
-}
-
-//function executes when the Stop button is pushed.
-function onStop() {
-  log('#logs', "Clicked the stop button");
-  if (detector && detector.isRunning) {
-    detector.removeEventListener();
-    detector.stop();
-  }
-};
-
-//function executes when the Reset button is pushed.
-function onReset() {
-  log('#logs', "Clicked the reset button");
-  if (detector && detector.isRunning) {
-    detector.reset();
-
-    document.querySelector('#results').innerHTML = "";
-  }
-};
-
 //Add a callback to notify when camera access is allowed
 detector.addEventListener("onWebcamConnectSuccess", function() {
   log('#logs', "Webcam access allowed");
