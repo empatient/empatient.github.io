@@ -4,7 +4,7 @@ document.getElementById("start").addEventListener("click", onStart);
 function onStart() {
     if (detector && !detector.isRunning) {
       document.querySelector("#logs").innerHTML = "";
-      detector.start(JSSDK.Assets.wasm);
+      detector.start();
     }
     log('#logs', "Clicked the start button");
   }
