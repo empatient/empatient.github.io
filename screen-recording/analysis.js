@@ -1,13 +1,3 @@
-//Step 1: Load in file using video tag in HTML
-//Step 2: Draw to the canvas until the image data can be drawn using getImageData()
-//Step 3: Process this data and analyze it
-
-//Loading in the file:
-
-//HTML code required:
-//<input type="file" accept="video/*"/>
-//<video controls autoplay></video>
-
 (function localFileVideoPlayer() {
 	'use strict'
   var URL = window.URL || window.webkitURL
@@ -37,10 +27,6 @@
   inputNode.addEventListener('change', playSelectedFile, false)
 })()
 
-
-//Drawing this video file to the canvas and processing it:
-
-//HTML code: analyis.html
 var JSSDK = JSSDK || {};
 JSSDK.Assets = {
   "wasm": {
