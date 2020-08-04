@@ -1,4 +1,5 @@
-document.getElementById("startSDK").addEventListener("click", runSDK);
+// document.getElementById("startSDK").addEventListener("click", runSDK);
+
 
 function runSDK() {
 
@@ -8,15 +9,17 @@ function runSDK() {
    affdex.FaceDetectorMode.LARGE_FACES=Faces occupying large portions of the frame
    affdex.FaceDetectorMode.SMALL_FACES=Faces occupying small portions of the frame
 */
+
 var faceMode = affdex.FaceDetectorMode.LARGE_FACES;
 
 //Construct a FrameDetector and specify the image width / height and face detector mode.
-var detector = new affdex.FrameDetector(faceMode);
+detector = new affdex.FrameDetector(faceMode);
 
 detector.detectAllExpressions();
 detector.detectAllEmotions();
 detector.detectAllEmojis();
 detector.detectAllAppearance();
+
 
 //Get a canvas element from DOM
 var aCanvas = document.getElementById("canvas");

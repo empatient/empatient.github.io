@@ -1,4 +1,8 @@
 <html>
+<head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+</head>>
     <body>
       <div>
         <h1 style="text-align:center; font-size: 40px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Emotional Analysis of the Appointment. </h1>
@@ -7,9 +11,24 @@
         <input type="file" accept="video/*"/>
         <video id="video" controls="true"></video>
         <button id="startSDK">Start SDK</button>
-        <script type="text/javascript" src="startSdkButtonScript.js"></script>
+        <button id="stop">Stop SDK</button>
       </div>
     <script src="https://download.affectiva.com/js/3.2.1/affdex.js"></script>
     <script type="text/javascript" src="analysis.js"></script>
+
+    <canvas id="canvas">
+    </canvas>
+    <div id='results'>
+    </div>
+    <div id='logs'>
+        
+    </div>
+    <script type="text/javascript">
+        var detector;
+    </script>
+    <script src="analysis.js"></script> 
+    <script src="startSdkButtonScript.js"></script> 
+    <script src="startButtonScript.js"></script> 
+    <script src="stopButtonScript.js"></script> 
     </body>
 </html>
