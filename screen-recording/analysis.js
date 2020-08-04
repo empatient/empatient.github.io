@@ -1,14 +1,4 @@
-var heartbeat, startTimestamp;
-
-function onVideoPlay() {
-  var $this = this; //cache
-  (function loop() {
-    if (!$this.paused && !$this.ended) {
-      ctx.drawImage($this, 0, 0);
-      setTimeout(loop, 1000 / 30); // drawing at 30fps
-    }
-  })();
-}
+var heartbeat, startTimestamp, ctx;
 
 function log(node_name, msg) {
     document.querySelector(node_name).innerHTML += "<span>" + msg + "</span><br />";
@@ -48,10 +38,21 @@ function runAnalysis() {
     log('#logs', "The affdex global variable has not been loaded.");
   }
 
-  var canvas = document.getElementById("canvas");
+  var canvas = document.getElementById("c1");
   var ctx = canvas.getContext('2d');
   var video = document.getElementById('video');
   var detector = new affdex.FrameDetector(affdex.FaceDetectorMode.LARGE_FACES);
+
+  function onVideoPlay() {
+    var $this = this; //cache
+    (function loop() {
+      if (!$this.paused && !$this.ended) {
+        ctx.drawImage($this, 0, 0);
+        setTimeout(loop, 1000 / 30); // drawing at 30fps
+      }
+    })();
+  }
+  
 
   // Set up a loop to draw frames to the canvas element
   video.addEventListener('play', onVideoPlay, 0);
@@ -70,6 +71,7 @@ function runAnalysis() {
   });
   detector.addEventListener("onInitializeFailure", function() {
     console.error("Affectiva failed to initialize.");
+    log('#logs', "Affectiva failed to initialize.");
   });
 
   detector.addEventListener("onImageResultsSuccess", onImageResultsSuccess);
@@ -94,6 +96,7 @@ function runAnalysis() {
     if (canPlay === '') canPlay = 'no'
     var message = ''
     var isError = canPlay === 'no'
+    log('#logs', "Video Loaded!");
     displayMessage(message, isError)
 
     if (isError) {
@@ -105,5 +108,4 @@ function runAnalysis() {
   }
   var inputNode = document.querySelector('input')
   inputNode.addEventListener('change', playSelectedFile, false)
-  log('#logs', "Video Loaded!");
 })()

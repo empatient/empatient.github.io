@@ -1,36 +1,37 @@
-<html>
-<head>  
-<script src="https://download.affectiva.com/js/3.2.1/affdex.js"></script>
-</head>  
-    <body>
-      <div>
-        <h1 style="text-align:center; font-size: 40px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Emotional Analysis of the Appointment. </h1>
-        <div id="message"></div>
-        <div class="container-fluid">
-            <div class="row">
-              <div class="col-md-8" id="affdex_elements" style="width:680px;height:480px;"></div>
-              <div class="col-md-4">
-                <div style="height:10em;">
-                  <strong>EMOTION TRACKING RESULTS</strong>
-                  <div id="results" style="word-wrap:break-word;"></div>
-                </div>
-                <div>
-                  <strong>DETECTOR LOG MSGS</strong>
-                </div>
-                <div id="logs"></div>
+
+    <html>
+        <head>  
+        <script src="https://download.affectiva.com/js/3.2.1/affdex.js"></script>
+        </head>  
+            <body>
+              <div>
+                <h1 style="text-align:center; font-size: 40px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Emotional Analysis of the Appointment. </h1>
+                <div id="message"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-8" id="affdex_elements" style="width:680px;height:480px;"></div>
+                      <div class="col-md-4">
+                        <div style="height:10em;">
+                          <strong>EMOTION TRACKING RESULTS</strong>
+                          <div id="results" style="word-wrap:break-word;"></div>
+                        </div>
+                        <div>
+                          <strong>DETECTOR LOG MSGS</strong>
+                        </div>
+                        <div id="logs"></div>
+                      </div>
+                    </div>
+                    <div>
+                <input type="file" accept="video/*"/>
+                <button id="startSDK">Start SDK</button>
+                <button id="stopSDK">Stop SDK</button>
+                <button id="resetSDK">Reset SDK</button>
+                <canvas id="c1" width="640" height="480"></canvas>
+                <video id="video" controls="true"></video>
               </div>
-            </div>
-            <div>
-        <canvas id="c1" width="640" height="480"></canvas>
-        <input type="file" accept="video/*"/>
-        <button id="startSDK">Start SDK</button>
-        <script type="text/javascript" src="startSdkButtonScript.js"></script>
-        <button id="stopSDK">Stop SDK</button>
-        <script type="text/javascript" src="stopSdkButtonScript.js"></script>
-        <button id="resetSDK">Reset SDK</button>
-        <script type="text/javascript" src="resetSdkButtonScript.js"></script>
-        <video id="video" controls="true"></video>
-      </div>
-      <script type="text/javascript" src="analysis.js"></script>
-    </body>
-</html>
+              <script type="text/javascript" src="startSdkButtonScript.js"></script>
+              <script type="text/javascript" src="resetSdkButtonScript.js"></script>
+              <script type="text/javascript" src="stopSdkButtonScript.js"></script>
+              <script type="text/javascript" src="analysis.js"></script>
+            </body>
+    </html>
