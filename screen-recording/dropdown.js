@@ -71,25 +71,6 @@ document.getElementById('stop-recording').onclick = function() {
     });
 };
 
-document.getElementById('full-screen').onclick = function() {
-    chrome.storage.sync.set({
-        enableTabCaptureAPI: 'false',
-        enableTabCaptureAPIAudioOnly: 'false',
-        enableMicrophone: 'false',
-        enableCamera: 'false',
-        enableScreen: 'true',
-        isRecording: 'true',
-        enableSpeakers: 'false'
-    }, function() {
-        runtimePort.postMessage({
-            messageFromContentScript1234: true,
-            startRecording: true,
-            dropdown: true
-        });
-        window.close();
-    });
-};
-
 document.getElementById('selected-tab-audio-only').onclick = function() {
     chrome.storage.sync.set({
         enableTabCaptureAPI: 'true',
