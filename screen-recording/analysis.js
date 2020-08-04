@@ -1,4 +1,6 @@
 var heartbeat, startTimestamp, ctx;
+var detector = new affdex.FrameDetector(affdex.FaceDetectorMode.LARGE_FACES);
+
 
 function log(node_name, msg) {
     document.querySelector(node_name).innerHTML += "<span>" + msg + "</span><br />";
@@ -34,6 +36,7 @@ function onImageResultsFailure(image, timestamp, err_detail) {
 }
 
 function runAnalysis() {
+  log('#logs', "runAnalysis() called");
   if (typeof(affdex)=="undefined") {
     log('#logs', "The affdex global variable has not been loaded.");
   }
@@ -41,7 +44,6 @@ function runAnalysis() {
   var canvas = document.getElementById("c1");
   var ctx = canvas.getContext('2d');
   var video = document.getElementById('video');
-  var detector = new affdex.FrameDetector(affdex.FaceDetectorMode.LARGE_FACES);
 
   function onVideoPlay() {
     var $this = this; //cache

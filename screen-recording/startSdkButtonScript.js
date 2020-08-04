@@ -5,6 +5,6 @@ function runSDK() {
     
     log('#logs', "Clicked the start button");
     
-    runAnalysis()
+    runAnalysis();
 
 }
