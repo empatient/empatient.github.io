@@ -1,3 +1,13 @@
+var JSSDK = JSSDK || {};
+JSSDK.Assets = {
+  "wasm": {
+      "affdex-native-bindings.wasm": "https://download.affectiva.com/js/wasm/affdex-native-bindings.wasm",
+      "affdex-native-bindings.js": "https://download.affectiva.com/js/wasm/affdex-native-bindings.js",
+      "affdex-native-bindings.data": "https://download.affectiva.com/js/wasm/affdex-native-bindings.data",
+      "affdex-worker.js": "https://download.affectiva.com/js/wasm/affdex-worker.js"
+  }
+};
+
 var heartbeat, startTimestamp, ctx;
 var detector = new affdex.FrameDetector(affdex.FaceDetectorMode.LARGE_FACES);
 // Set up and start the detector
@@ -6,6 +16,7 @@ detector.detectAllEmotions();
 detector.detectAllAppearance();
 
 detector.addEventListener("onInitializeSuccess", function () {
+  log("#logs", "Initialized!");
   document.getElementById("video").play();
   startTimestamp = new Date().getTime() / 1000;
   heartbeat = setInterval(analyzeVideoFrame, 1000);
