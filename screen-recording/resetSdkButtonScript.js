@@ -1,4 +1,4 @@
-document.getElementById("reset").addEventListener("click", onReset);
+document.getElementById("resetSDK").addEventListener("click", onReset);
 
 //function executes when the Reset button is pushed.
 function onReset() {
