@@ -66,7 +66,7 @@
          "https://www.googleapis.com/auth/youtube"
        ]
    },
-   "content_security_policy": "script-src 'self' https://apis.google.com https://download.affectiva.com/js/3.2.1/affdex.js; object-src 'self'",
+   "content_security_policy": "script-src 'self' https://apis.google.com https://download.affectiva.com/js/wasm/affdex.js; object-src 'self'",
    "web_accessible_resources":[
       "images/main-icon.png"
    ],
