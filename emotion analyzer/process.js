@@ -1,5 +1,5 @@
 
-class Plotter {
+/*class Plotter {
   constructor() {
     this.margin = [20, 80, 20, 80]; // margins
     this.w = 600 - this.margin[1] - this.margin[3]; // width
@@ -424,4 +424,4 @@ class Plotter {
   }
 
 
-})();
+})(); */

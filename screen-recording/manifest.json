@@ -66,7 +66,13 @@
          "https://www.googleapis.com/auth/youtube"
        ]
    },
-   "content_security_policy": "script-src 'self' https://apis.google.com https://download.affectiva.com/js/wasm/affdex.js; object-src 'self'",
+   "content_security_policy": 
+   "script-src 'self' https://apis.google.com https://download.affectiva.com/js/wasm/affdex.js https://download.affectiva.com/js/3.2/affdex.js https://download.affectiva.com/js/3.2/affdex-native-bindings.js https://download.affectiva.com/js/3.2/affdex-native-bindings.asm.js https://rawgit.com/Stuk/jszip-utils/master/dist/jszip-utils.min.js https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js https://d3js.org/d3.v3.min.js; object-src 'self'",
+   
+
+
+
+
    "web_accessible_resources":[
       "images/main-icon.png"
    ],
