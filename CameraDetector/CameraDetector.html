@@ -1,0 +1,45 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1 style="text-align:center; font-size: 40px; font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif">Emotional Analysis of the Appointment. </h1>
+    <div id="message"></div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8" id="affdex_elements" style="width:680px;height:480px;"></div>
+        <div class="col-md-4">
+          <div style="height:15em;">
+            <strong>EMOTION TRACKING RESULTS</strong>
+            <div id="results" style="word-wrap:break-word;"></div>
+          </div>
+          <div>
+            <strong>DETECTOR LOG MSGS</strong>
+          </div>
+          <div id="logs"></div>
+        </div>
+      </div>
+      <div>
+        <input type="file" accept="video/*"/>
+        <button id="Start">Start Analysis</button>
+        <button id="Stop">Stop</button>
+        <button id="Reset">Reset</button>
+        <canvas id="c1" width="640" height="480" style="display:none"></canvas>
+        <video id="video" controls="true"></video>
+        <h3>Affectiva JS SDK CameraDetector to track different emotions.</h3>
+        <p>
+          <strong>Instructions</strong>
+          </br>
+          Press the start button to start the detector.
+          <br/> When a face is detected, the probabilities of the different emotions are written to the DOM.
+          <br/> Press the stop button to end the detector.
+        </p>
+      </div>
+    </div>
+    <script src="https://download.affectiva.com/js/wasm/affdex.js"></script>
+    <script type="text/javascript" src="startSdkButtonScript.js"></script>
+    <script type="text/javascript" src="resetSdkButtonScript.js"></script>
+    <script type="text/javascript" src="stopSdkButtonScript.js"></script>
+    <script type="text/javascript" src="CameraDetector.js"></script>
+  </body>
+</html>    
