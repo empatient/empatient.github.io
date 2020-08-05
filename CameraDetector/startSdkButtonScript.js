@@ -1,10 +1,10 @@
-document.getElementById("startSDK").addEventListener("click", runSDK);
+document.getElementById("Start").addEventListener("click", onStart);
 
 //function executes when Start button is pushed.
-function runSDK() {
-    
-    log('#logs', "Clicked the start button");
-    
-    runAnalysis();
-
+function onStart() {
+  if (detector && !detector.isRunning) {
+    document.querySelector("#logs").innerHTML = "";
+    detector.start(JSSDK.Assets.wasm);
+  }
+  log("#logs", "Clicked the start button");
 }
