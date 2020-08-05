@@ -100,7 +100,7 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image, timest
       drawFeaturePoints(image, faces[0].featurePoints);
   }
 
-  setTimeout(detector.captureNextImage, 150);
+  setTimeout(detector.captureNextImage, 1000);
 });
 
 //Draw the detected facial feature points on the image
