@@ -336,6 +336,8 @@ class Plotter {
     return [highest_emotion, highest_emotion_value]
   }
 
+
+
   var plotFeaturePoints = function(featurePoints) {
     view_ctx.strokeStyle = "#FFFFFF";
     for (var id in featurePoints) {
