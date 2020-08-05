@@ -27,8 +27,8 @@ detector.detectAllAppearance();
 detector.addEventListener("onInitializeSuccess", function() {
   log('#logs', "The detector reports initialized");
   //Display canvas instead of video feed because we want to draw the feature points on it
-  document.querySelector("#face_video_canvas").style.display = "block";
-  document.querySelector("#face_video").style.display = "none";
+  document.querySelector("c1").style.display = "none";
+  document.querySelector("c1").style.display = "block";
 });
 
 function log(node_name, msg) {
@@ -68,7 +68,7 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image, timest
       return val.toFixed ? Number(val.toFixed(0)) : val;
     }));
     log('#results', "Emoji: " + faces[0].emojis.dominantEmoji);
-    if(document.querySelector('#face_video_canvas') != null)
+    if(document.querySelector('c1') != null)
       drawFeaturePoints(image, faces[0].featurePoints);
   }
 
@@ -77,7 +77,7 @@ detector.addEventListener("onImageResultsSuccess", function(faces, image, timest
 
 //Draw the detected facial feature points on the image
 function drawFeaturePoints(img, featurePoints) {
-  var contxt = document.querySelector('#face_video_canvas').getContext('2d');
+  var contxt = document.querySelector('c1').getContext('2d');
 
   var hRatio = contxt.canvas.width / img.width;
   var vRatio = contxt.canvas.height / img.height;
