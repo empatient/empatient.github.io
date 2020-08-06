@@ -238,8 +238,8 @@ class Plotter {
       if (faces.length > 0) {
         var face = faces[0];
 
-        face_angles = faceAngle(face);
-        draw_angles(face_angles);
+        //face_angles = faceAngle(face);
+       // draw_angles(face_angles);
 
 
 
@@ -269,7 +269,7 @@ class Plotter {
       console.log(err_detail);
     });
   }
-
+/*
   var draw_angles = function(angles) {
     var c = document.getElementById("angle_canvas");
     var ctx = c.getContext("2d");
@@ -288,6 +288,8 @@ class Plotter {
     ctx.stroke();
   }
 
+
+ */
   var faceToArray = function(face) {
     emotionArray = Object.values(face.emotions);
     expressionsArray = Object.values(face.expressions);
@@ -303,9 +305,9 @@ class Plotter {
   }
 
   var engagement = function(face) {
-   
 
-  return face.emotions.engagement;
+
+    return face.emotions.engagement;
   }
 
   var faceAngle = function(face) {
