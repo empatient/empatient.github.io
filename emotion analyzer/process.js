@@ -11,7 +11,7 @@ class Plotter {
     this.now = 0;
     this.delay = 20;
     this.x = d3.scale.linear().domain([this.now - this.delay, this.now]).range([0, this.w]);
-    this.y = d3.scale.linear().domain([-10, 10]).range([this.h - 30, 0]);
+    this.y = d3.scale.linear().domain([0, 100]).range([this.h - 30, 0]);
     this.line = d3.svg.line().interpolate("step-after")
         .x(function(d, i) {
           return this.x(d[0]);
@@ -58,13 +58,13 @@ class Plotter {
         .attr("y", -9)
         .attr("text-anchor", "middle")
         .style("font-size", "100%")
-        .text("Mouth Slant Angle vs Time");
+        .text("Engagement vs Time");
 
     this.graph.append("text")
         .attr("class", "yLabel")
         .attr("text-anchor", "middle") // this makes it easy to centre the text as the transform is applied to the anchor
         .attr("transform", "translate(" + -50 + "," + (this.h / 2) + ")rotate(-90)") // text is drawn off the screen top left, move down and out and rotate
-        .text("Mouth Slant Angle (Degrees)");
+        .text("Engagement");
 
     this.graph.append("text")
         .attr("text-anchor", "middle") // this makes it easy to centre the text as the transform is applied to the anchor
@@ -98,15 +98,15 @@ class Plotter {
         this.graph.select(".y.axis").call(this.yAxisLeft)
         break;
       case false:
-        this.graph.selectAll(".yLabel").text("Mouth Slant Angle (Degrees)");
-        this.graph.selectAll(".Title").text("Mouth Slant Angle vs Time");
-        this.y.domain([-10, 10])
+        this.graph.selectAll(".yLabel").text("Engagement");
+        this.graph.selectAll(".Title").text("Engagement vs Time");
+        this.y.domain([0, 100])
         this.graph.select(".y.axis").call(this.yAxisLeft)
         break;
       default:
-        this.graph.selectAll(".yLabel").text("Mouth Slant Angle (Degrees)");
-        this.graph.selectAll(".Title").text("Mouth Slant Angle vs Time");
-        this.y.domain([-10, 10])
+        this.graph.selectAll(".yLabel").text("Engagement");
+        this.graph.selectAll(".Title").text("Engagement vs Time");
+        this.y.domain([0, 100])
         this.graph.select(".y.axis").call(this.yAxisLeft)
     }
     this.reset();
@@ -245,10 +245,10 @@ class Plotter {
 
         joyGraph = joy(face)
 
-        mouth_slant_angle = faceToMouthSlant(face)
+        engagementGraph = engagement(face)
         //mouth_ratio_txt.innerHTML = "mouth opening ratio: " + mouth_ratio_val;
         if (graph_data_type) {
-          plotter.tick(timestamp, mouth_slant_angle)
+          plotter.tick(timestamp, engagementGraph)
         } else {
           plotter.tick(timestamp, joyGraph)
         }
@@ -259,7 +259,7 @@ class Plotter {
         console.log("face detected at " + timestamp.toFixed(2))
 
 
-        tempFrameMetricData = [timestamp].concat([], faceToArray(face), [joyGraph, mouth_slant_angle]);
+        tempFrameMetricData = [timestamp].concat([], faceToArray(face), [joyGraph, engagementGraph]);
         metric_data.push(tempFrameMetricData);
       }
       nextFrame();
@@ -308,7 +308,7 @@ class Plotter {
     return face.emotions.joy;
   }
 
-  var faceToMouthSlant = function(face) {
+  var engagement = function(face) {
     var r_lip_coord = face.featurePoints[20];
     var l_lip_coord = face.featurePoints[24];
     var r_eye_coord = face.featurePoints[16];
@@ -317,7 +317,7 @@ class Plotter {
     var eye_slope = (r_eye_coord.y - l_eye_coord.y) / (r_eye_coord.x - l_eye_coord.x);
     var mouth_eye_angle = (Math.atan2((1 - mouth_slope * eye_slope), (mouth_slope - eye_slope)) - Math.PI / 2) * (180 / Math.PI);
 
-    return mouth_eye_angle
+    return face.emotions.engagement;
   }
 
   var faceAngle = function(face) {
