@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!--<meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+  <meta content="utf-8" http-equiv="encoding">-->
+  <meta charset="utf-8">
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta http-equiv="edit-Type" edit="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script type="text/javascript" src="https://download.affectiva.com/js/3.2/affdex.js"></script>
+  <style >
+          /* tell the SVG path to be a thin blue line without any area fill */
+      
+          path {
+        stroke: steelblue;
+        stroke-width: 1;
+        fill: none;
+      }
+      
+      .axis {
+        shape-rendering: crispEdges;
+      }
+      
+      .x.axis line {
+        stroke: lightgrey;
+        stroke-width: 5px;
+      }
+      
+      .x.axis .minor {
+        stroke-opacity: .5;
+      }
+      
+      .x.axis path {
+        display: none;
+      }
+      
+      .y.axis line,
+      .y.axis path {
+        fill: none;
+        stroke: #000;
+      }
+
+      .float-left{
+          float: left;
+      }
+
+  </style>
+</head>
+<body>
+
+    <div id="message"></div>
+  
+    <video id="video" style="display:none"></video>
+  
+    <div id="video_control" class="float-left" style="display:none;padding-left: 90px;">
+    <canvas id='affectiva_canvas' style="display:none"></canvas>
+    <canvas id='viewing_canvas' style="padding-top: 10px;padding-left: 80px;padding-right: 10px;padding-bottom: 10px;"></canvas>
+    <input type="file" class="upload" id="fileUp" name="fileUpload" style="display:none" accept="video/*" />
+    <button type="button" id="reset_btn" style="display: inline;">Reset</button>
+    <button type="button" id="download_btn" style="display: inline;">Download Metrics</button>
+    <button type="button" id="change_graph_btn" style="display: inline;">Change Graph</button>
+    </div>
+    <div id="graph" class="aGraph float-left" style="display:none;padding-top: 20px;"></div>
+    <div id="mouth_ratio_txt" style="font-size:100%"></div>
+    <div id="emotion_txt" style="font-size:100%"></div>
+    <canvas id="angle_canvas" width="300" height="100" style="border:1px solid #000000;">
+   
+    <!--<script src="https://download.affectiva.com/js/3.2.1/affdex.js"></script>-->
+    <script type="text/javascript" src="https://rawgit.com/Stuk/jszip-utils/master/dist/jszip-utils.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.3/FileSaver.min.js"></script>
+    <script type="text/javascript" src="https://d3js.org/d3.v3.min.js"></script>  
+    <script type="text/javascript" src="process.js"></script>
+    
+  </body>
+  </html>
+  

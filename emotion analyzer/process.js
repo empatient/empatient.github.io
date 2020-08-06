@@ -183,11 +183,11 @@ class Plotter {
     // if we are not passed end, seek to next interval
     if (vidTimeStamp <= video.duration) {
       // this will trigger another seeked event
-      message_text.innerHTML = ((vidTimeStamp / video.duration) * 100).toFixed(2) + "% completed";
+      message_text.innerHTML = "Analysis status:" + ((vidTimeStamp / video.duration) * 100).toFixed(2) + "% completed";
       video.currentTime = vidTimeStamp;
     } else {
       // DONE!, next action
-      message_text.innerHTML = "100% Completed";
+      message_text.innerHTML = "Analysis status: 100% Completed";
       alert("Video Processed");
 
       download_btn.click();
