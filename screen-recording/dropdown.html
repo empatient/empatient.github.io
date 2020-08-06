@@ -32,6 +32,7 @@ html, body {
   font-family: Custom_Font!important;
   font-size: 1em;
   overflow: hidden;
+  
 }
 
 hr {
@@ -42,6 +43,16 @@ hr {
 div {
   padding: 4px 8px;
 }
+a {
+  outline: none;
+  text-decoration: none;
+  color:black;
+}
+div.btn:hover a{
+  color: white;
+  background:#5b517c;
+  text-decoration: none;
+}
 
 div.btn {
   text-decoration: none;
@@ -49,28 +60,24 @@ div.btn {
   border: 0;
   font-size: inherit;
   cursor: pointer;
+
 }
 
 div.btn:hover {
-  color: #ffffff;
-  background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  color: white;
+  background:#5b517c;
   text-decoration: none;
 }
 
-a {
-  outline: none;
-  text-decoration: none;
-  color: #0C97BB;
-}
+
 
 div.btn img {
   height: 32px;
 }
+
+
+
+
 
 section {
   margin-right: 15px;
@@ -91,12 +98,12 @@ section {
       <hr>
 
       <hr>
-      <article id="analysis-section">
-        <div>
-          <a href="analysis.html" target="_blank">Analyze an Appointment</a>
-        </div>
-      <hr>
+      <div class="btn" id="analysis-section">
+          <section><img src="images/main-icon.png"></section>
+          <a class="link" href="analysis.html" target="_blank">Analyze an Appointment</a>
+      </div>
 
+      <hr>
 
       <hr>
       <div style="float: right;">
