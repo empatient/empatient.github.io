@@ -28,15 +28,17 @@ input {
 }
 
 html, body {
-  background-color: #F3F3F3;
+  background-color: white;
+
   font-family: Custom_Font!important;
   font-size: 1em;
   overflow: hidden;
   overflow-x: hidden;
+  color: #000000;
 }
 video {
-    border-left: 1px dotted rgb(255,157,255);
-    border-right: 1px dotted rgb(255,157,255);
+    border-left: 10px dotted #FF00BF;
+    border-right: 10px dotted #FF00BF;
 }
 header {
     position: absolute;
@@ -49,7 +51,6 @@ header {
     left: 0;
     right: 0;
     top: 0;
-    border-bottom: 1px dotted red;
     overflow: hidden;
 }
 
@@ -61,8 +62,9 @@ header {
 }
 
 #btn-upload {
-    height: 42px;
-    margin-top: 10px;
+    height: 55px;
+    margin-top: 1px;
+    margin-bottom: 6px;
 }
 
 #btn-upload-dropdown, #btn-recordings-list-dropdown {
@@ -84,8 +86,8 @@ header {
 }
 
 #btn-upload-dropdown div, #btn-recordings-list-dropdown div {
-  padding: 5px 10px;
-  border-bottom: 1px dotted red;
+  padding: 5px 5px;
+  
 }
 
 #btn-upload-dropdown div:hover, #btn-recordings-list-dropdown div:hover {
@@ -117,6 +119,9 @@ header {
 .cross-icon {
   margin-left: 15px;
 }
+a{
+  text-decoration: none;
+}
 
 #browser-cache .cross-icon {
     float: none;
@@ -130,7 +135,7 @@ header {
 <link rel="manifest" href="manifest.json">
 <header>
     <img id="btn-recordings-list" src="images/list-icon.png" title="List Of Recordings">
-    <img id="btn-upload" src="images/upload-icon.png" title="Upload">
+    <img id="btn-upload" src="images/smile.png"  title="Upload">
     
     <p style="position: absolute;right: 10%;">
       <span style="font-size: .6em; margin-left: 20px;" id="file-size" title="Size"></span>
@@ -145,10 +150,10 @@ header {
     <span id="browser-cache" style="font-size: 17px"></span>
 </header>
 
-<div id="btn-upload-dropdown">
+<!--<div id="btn-upload-dropdown">
   <div id="btn-php-upload">Upload to <span style="color: red;">Private Server</span></div>
   <div id="btn-youtube-upload">Upload to <span style="color: red;">YouTube</span></div>
-</div>
+</div>-->
 
 <div id="btn-recordings-list-dropdown"></div>
 
