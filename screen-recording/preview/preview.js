@@ -90,7 +90,7 @@ function onGettingFile(f, item) {
         video.play();
     };
 
-    var html = 'Click <a href="' + file.url + '" download="' + file.name + '">here</a> to download.';
+    var html = 'Click <a href="' + file.url + '" download="' + file.name + '">here</a> to download';
     if (item.php && item.youtube) {
         html = 'Click to download file from <a href="' + item.php + '" target="_blank">Private Server</a> <img src="images/cross-icon.png" class="cross-icon" title="Delete from server"> or <a href="' + item.youtube + '" target="_blank">YouTube</a>';
     } else if (item.php) {
