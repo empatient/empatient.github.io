@@ -11,65 +11,65 @@ class Plotter {
     this.now = 0;
     this.delay = 20;
     this.x = d3.scale.linear().domain([this.now - this.delay, this.now]).range([0, this.w]);
-    this.y = d3.scale.linear().domain([-10, 10]).range([this.h - 30, 0]);
+    this.y = d3.scale.linear().domain([0, 100]).range([this.h - 30, 0]);
     this.line = d3.svg.line().interpolate("step-after")
-      .x(function(d, i) {
-        return this.x(d[0]);
-      })
-      .y(function(d, i) {
-        return this.y(d[1]);
-      });
+        .x(function(d, i) {
+          return this.x(d[0]);
+        })
+        .y(function(d, i) {
+          return this.y(d[1]);
+        });
 
     this.graph = d3.select("#graph").append("svg:svg")
-      .attr("width", this.w + this.margin[1] + this.margin[3])
-      .attr("height", this.h + this.margin[0] + this.margin[2])
-      .append("svg:g")
-      .attr("transform", "translate(" + this.margin[3] + "," + this.margin[0] + ")");
+        .attr("width", this.w + this.margin[1] + this.margin[3])
+        .attr("height", this.h + this.margin[0] + this.margin[2])
+        .append("svg:g")
+        .attr("transform", "translate(" + this.margin[3] + "," + this.margin[0] + ")");
 
     this.xAxis = d3.svg.axis().scale(this.x).tickSize(-this.h + 30).tickSubdivide(10)
     this.graph.append("svg:g")
-      .attr("class", "x axis")
-      .attr("transform", "translate(0," + (this.h - 30) + ")")
-      .call(this.xAxis);
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + (this.h - 30) + ")")
+        .call(this.xAxis);
 
     this.yAxisLeft = d3.svg.axis().scale(this.y).ticks(4).orient("left");
     this.graph.append("svg:g")
-      .attr("class", "y axis")
-      .attr("transform", "translate(-15,0)")
-      .call(this.yAxisLeft);
+        .attr("class", "y axis")
+        .attr("transform", "translate(-15,0)")
+        .call(this.yAxisLeft);
 
     this.clip = this.graph.append("defs").append("svg:clipPath")
-      .attr("id", "clip")
-      .append("svg:rect")
-      .attr("id", "clip-rect")
-      .attr("x", "0")
-      .attr("y", "0")
-      .attr("width", this.w)
-      .attr("height", this.h - 30);
+        .attr("id", "clip")
+        .append("svg:rect")
+        .attr("id", "clip-rect")
+        .attr("x", "0")
+        .attr("y", "0")
+        .attr("width", this.w)
+        .attr("height", this.h - 30);
 
     this.path = this.graph.append("svg:path")
-      .attr("class", "path")
-      .attr("clip-path", "url(#clip)")
-      .attr("d", this.line(this.data));
+        .attr("class", "path")
+        .attr("clip-path", "url(#clip)")
+        .attr("d", this.line(this.data));
 
     this.graph.append("text")
-      .attr("class", "Title")
-      .attr("x", (this.w / 2))
-      .attr("y", -9)
-      .attr("text-anchor", "middle")
-      .style("font-size", "100%")
-      .text("Mouth Slant Angle vs Time");
+        .attr("class", "Title")
+        .attr("x", (this.w / 2))
+        .attr("y", -9)
+        .attr("text-anchor", "middle")
+        .style("font-size", "100%")
+        .text("Engagement vs Time");
 
     this.graph.append("text")
-      .attr("class", "yLabel")
-      .attr("text-anchor", "middle") // this makes it easy to centre the text as the transform is applied to the anchor
-      .attr("transform", "translate(" + -50 + "," + (this.h / 2) + ")rotate(-90)") // text is drawn off the screen top left, move down and out and rotate
-      .text("Mouth Slant Angle (Degrees)");
+        .attr("class", "yLabel")
+        .attr("text-anchor", "middle") // this makes it easy to centre the text as the transform is applied to the anchor
+        .attr("transform", "translate(" + -50 + "," + (this.h / 2) + ")rotate(-90)") // text is drawn off the screen top left, move down and out and rotate
+        .text("Engagement");
 
     this.graph.append("text")
-      .attr("text-anchor", "middle") // this makes it easy to centre the text as the transform is applied to the anchor
-      .attr("transform", "translate(" + (this.w / 2) + "," + this.h + ")") // centre below axis
-      .text("Time (Seconds)");
+        .attr("text-anchor", "middle") // this makes it easy to centre the text as the transform is applied to the anchor
+        .attr("transform", "translate(" + (this.w / 2) + "," + this.h + ")") // centre below axis
+        .text("Time (Seconds)");
 
   }
   tick(timestamp, value) {
@@ -92,21 +92,21 @@ class Plotter {
     console.log(graphType)
     switch (graphType) {
       case true:
-        this.graph.selectAll(".yLabel").text("Mouth Width Ratio");
-        this.graph.selectAll(".Title").text("Mouth Width vs Time");
-        this.y.domain([0, 1])
+        this.graph.selectAll(".yLabel").text("Joy");
+        this.graph.selectAll(".Title").text("Joy vs Time");
+        this.y.domain([0, 100])
         this.graph.select(".y.axis").call(this.yAxisLeft)
         break;
       case false:
-        this.graph.selectAll(".yLabel").text("Mouth Slant Angle (Degrees)");
-        this.graph.selectAll(".Title").text("Mouth Slant Angle vs Time");
-        this.y.domain([-10, 10])
+        this.graph.selectAll(".yLabel").text("Engagement");
+        this.graph.selectAll(".Title").text("Engagement vs Time");
+        this.y.domain([0, 100])
         this.graph.select(".y.axis").call(this.yAxisLeft)
         break;
       default:
-        this.graph.selectAll(".yLabel").text("Mouth Slant Angle (Degrees)");
-        this.graph.selectAll(".Title").text("Mouth Slant Angle vs Time");
-        this.y.domain([-10, 10])
+        this.graph.selectAll(".yLabel").text("Engagement");
+        this.graph.selectAll(".Title").text("Engagement vs Time");
+        this.y.domain([0, 100])
         this.graph.select(".y.axis").call(this.yAxisLeft)
     }
     this.reset();
@@ -183,11 +183,11 @@ class Plotter {
     // if we are not passed end, seek to next interval
     if (vidTimeStamp <= video.duration) {
       // this will trigger another seeked event
-      message_text.innerHTML = "Analysis status: " + ((vidTimeStamp / video.duration) * 100).toFixed(2) + "% completed";
+      message_text.innerHTML = ((vidTimeStamp / video.duration) * 100).toFixed(2) + "% completed";
       video.currentTime = vidTimeStamp;
     } else {
       // DONE!, next action
-      message_text.innerHTML = "Analysis status: 100% Completed";
+      message_text.innerHTML = "100% Completed";
       alert("Video Processed");
 
       download_btn.click();
@@ -241,13 +241,16 @@ class Plotter {
         face_angles = faceAngle(face);
         draw_angles(face_angles);
 
-        mouth_ratio_val = faceToMouthRatio(face)
-        mouth_slant_angle = faceToMouthSlant(face)
-        mouth_ratio_txt.innerHTML = "mouth opening ratio: " + mouth_ratio_val;
+
+
+        joyGraph = joy(face)
+
+        engagementGraph = engagement(face)
+        //mouth_ratio_txt.innerHTML = "mouth opening ratio: " + mouth_ratio_val;
         if (graph_data_type) {
-          plotter.tick(timestamp, mouth_slant_angle)
+          plotter.tick(timestamp, engagementGraph)
         } else {
-          plotter.tick(timestamp, mouth_ratio_val)
+          plotter.tick(timestamp, joyGraph)
         }
 
         highest_emotion = faceToHighestEmotion(face);
@@ -256,7 +259,7 @@ class Plotter {
         console.log("face detected at " + timestamp.toFixed(2))
 
 
-        tempFrameMetricData = [timestamp].concat([], faceToArray(face), [mouth_ratio_val, mouth_slant_angle]);
+        tempFrameMetricData = [timestamp].concat([], faceToArray(face), [joyGraph, engagementGraph]);
         metric_data.push(tempFrameMetricData);
       }
       nextFrame();
@@ -295,26 +298,14 @@ class Plotter {
     return [].concat([], emotionArray, expressionsArray, measurementsArray, featurePointsArray)
   };
 
-  var faceToMouthRatio = function(face) {
-    var r_lip_coord = face.featurePoints[20];
-    var l_lip_coord = face.featurePoints[24];
-    var u_lip_coord = face.featurePoints[28];
-    var b_lip_coord = face.featurePoints[29];
-    var mouth_width = Math.sqrt(Math.pow((r_lip_coord.x - l_lip_coord.x), 2) + Math.pow((r_lip_coord.y - l_lip_coord.y), 2));
-    var mouth_height = Math.sqrt(Math.pow((u_lip_coord.x - b_lip_coord.x), 2) + Math.pow((u_lip_coord.y - b_lip_coord.y), 2));
-    return (mouth_height / mouth_width);
+  var joy = function(face) {
+    return face.emotions.joy;
   }
 
-  var faceToMouthSlant = function(face) {
-    var r_lip_coord = face.featurePoints[20];
-    var l_lip_coord = face.featurePoints[24];
-    var r_eye_coord = face.featurePoints[16];
-    var l_eye_coord = face.featurePoints[19];
-    var mouth_slope = (r_lip_coord.y - l_lip_coord.y) / (r_lip_coord.x - l_lip_coord.x);
-    var eye_slope = (r_eye_coord.y - l_eye_coord.y) / (r_eye_coord.x - l_eye_coord.x);
-    var mouth_eye_angle = (Math.atan2((1 - mouth_slope * eye_slope), (mouth_slope - eye_slope)) - Math.PI / 2) * (180 / Math.PI);
+  var engagement = function(face) {
+   
 
-    return mouth_eye_angle
+  return face.emotions.engagement;
   }
 
   var faceAngle = function(face) {
@@ -326,7 +317,7 @@ class Plotter {
 
   var faceToHighestEmotion = function(face) {
     emotions = face.emotions
-      //these two emotion seems to always dominate preventing other emotions from being seen thus ignored
+    //these two emotion seems to always dominate preventing other emotions from being seen thus ignored
     delete emotions.engagement
     delete emotions.valence
     highest_emotion = Object.keys(face.emotions).reduce(function(a, b) {
@@ -336,12 +327,14 @@ class Plotter {
     return [highest_emotion, highest_emotion_value]
   }
 
+
+
   var plotFeaturePoints = function(featurePoints) {
     view_ctx.strokeStyle = "#FFFFFF";
     for (var id in featurePoints) {
       view_ctx.beginPath();
       view_ctx.arc(featurePoints[id].x,
-        featurePoints[id].y, 2, 0, 2 * Math.PI);
+          featurePoints[id].y, 2, 0, 2 * Math.PI);
       view_ctx.stroke();
     }
   }
@@ -360,18 +353,18 @@ class Plotter {
   download_btn.onclick = function() {
     var emotionHeader = 'time, joy, sadness, disgust, contempt, anger, fear, surprise, valence, engagement,';
     var expressionHeader = 'smile, innerBrowRaise, browRaise, browFurrow, noseWrinkle, upperLipRaise, lipCornerDepressor, chinRaise, ' +
-      'lipPucker, lipPress, lipSuck, mouthOpen, smirk, eyeClosure, attention, lidTighten, jawDrop, dimpler, eyeWiden, cheekRaise, lipStretch,';
+        'lipPucker, lipPress, lipSuck, mouthOpen, smirk, eyeClosure, attention, lidTighten, jawDrop, dimpler, eyeWiden, cheekRaise, lipStretch,';
     var measurementsHeader = 'interocularDistance,pitch,roll,yaw,';
     var featurePointsHeader = 'Right_Top_Jaw_x,Right_Top_Jaw_y,Right_Jaw_Angle_x,Right_Jaw_Angle_y,Tip_of_Chin_x,Tip_of_Chin_y,Left_Jaw_Angle_x,Left_Jaw_Angle_y,' +
-      'Left_Top_Jaw_x,Left_Top_Jaw_y,Outer_Right_Brow_Corner_x,Outer_Right_Brow_Corner_y,Right_Brow_Center_x,Right_Brow_Center_y,' +
-      'Inner_Right_Brow_Corner_x,Inner_Right_Brow_Corner_y,Inner_Left_Brow_Corner_x,Inner_Left_Brow_Corner_y,Left_Brow_Center_x,Left_Brow_Center_y,' +
-      'Outer_Left_Brow_Corner_x,Outer_Left_Brow_Corner_y,Nose_Root_x,Nose_Root_y,Nose_Tip_x,Nose_Tip_y,Nose_Lower_Right_Boundary_x,Nose_Lower_Right_Boundary_y,' +
-      'Nose_Bottom_Boundary_x,Nose_Bottom_Boundary_y,Nose_Lower_Left_Boundary_x,Nose_Lower_Left_Boundary_y,Outer_Right_Eye_x,Outer_Right_Eye_y,' +
-      'Inner_Right_Eye_x,Inner_Right_Eye_y,Inner_Left_Eye_x,Inner_Left_Eye_y,Outer_Left_Eye_x,Outer_Left_Eye_y,Right_Lip_Corner_x,Right_Lip_Corner_y,' +
-      'Right_Apex_Upper_Lip_x,Right_Apex_Upper_Lip_y,Upper_Lip_Center_x,Upper_Lip_Center_y,Left_Apex_Upper_Lip_x,Left_Apex_Upper_Lip_y,' +
-      'Left_Lip_Corner_x,Left_Lip_Corner_y,Left_Edge_Lower_Lip_x,Left_Edge_Lower_Lip_y,Lower_Lip_Center_x,Lower_Lip_Center_y,Right_Edge_Lower_Lip_x,Right_Edge_Lower_Lip_y,' +
-      'Bottom_Upper_Lip_x,Bottom_Upper_Lip_y,Top_Lower_Lip_x,Top_Lower_Lip_y,Upper_Corner_Right_Eye_x,Upper_Corner_Right_Eye_y,' +
-      'Lower_Corner_Right_Eye_x,Lower_Corner_Right_Eye_y,Upper_Corner_Left_Eye_x,Upper_Corner_Left_Eye_y,Lower_Corner_Left_Eye_x,Lower_Corner_Left_Eye_y,';
+        'Left_Top_Jaw_x,Left_Top_Jaw_y,Outer_Right_Brow_Corner_x,Outer_Right_Brow_Corner_y,Right_Brow_Center_x,Right_Brow_Center_y,' +
+        'Inner_Right_Brow_Corner_x,Inner_Right_Brow_Corner_y,Inner_Left_Brow_Corner_x,Inner_Left_Brow_Corner_y,Left_Brow_Center_x,Left_Brow_Center_y,' +
+        'Outer_Left_Brow_Corner_x,Outer_Left_Brow_Corner_y,Nose_Root_x,Nose_Root_y,Nose_Tip_x,Nose_Tip_y,Nose_Lower_Right_Boundary_x,Nose_Lower_Right_Boundary_y,' +
+        'Nose_Bottom_Boundary_x,Nose_Bottom_Boundary_y,Nose_Lower_Left_Boundary_x,Nose_Lower_Left_Boundary_y,Outer_Right_Eye_x,Outer_Right_Eye_y,' +
+        'Inner_Right_Eye_x,Inner_Right_Eye_y,Inner_Left_Eye_x,Inner_Left_Eye_y,Outer_Left_Eye_x,Outer_Left_Eye_y,Right_Lip_Corner_x,Right_Lip_Corner_y,' +
+        'Right_Apex_Upper_Lip_x,Right_Apex_Upper_Lip_y,Upper_Lip_Center_x,Upper_Lip_Center_y,Left_Apex_Upper_Lip_x,Left_Apex_Upper_Lip_y,' +
+        'Left_Lip_Corner_x,Left_Lip_Corner_y,Left_Edge_Lower_Lip_x,Left_Edge_Lower_Lip_y,Lower_Lip_Center_x,Lower_Lip_Center_y,Right_Edge_Lower_Lip_x,Right_Edge_Lower_Lip_y,' +
+        'Bottom_Upper_Lip_x,Bottom_Upper_Lip_y,Top_Lower_Lip_x,Top_Lower_Lip_y,Upper_Corner_Right_Eye_x,Upper_Corner_Right_Eye_y,' +
+        'Lower_Corner_Right_Eye_x,Lower_Corner_Right_Eye_y,Upper_Corner_Left_Eye_x,Upper_Corner_Left_Eye_y,Lower_Corner_Left_Eye_x,Lower_Corner_Left_Eye_y,';
     var customHeaders = 'mouth opening, mouth slant'
     var csvOutputString = emotionHeader + expressionHeader + measurementsHeader + featurePointsHeader + customHeaders + '\n';
 
@@ -392,11 +385,11 @@ class Plotter {
     fileName = vidFile.name.split('.')[0];
     zip.file(fileName + ".csv", csvOutputString);
     zip.generateAsync({
-        type: "blob"
-      })
-      .then(function(content) {
-        saveAs(content, fileName + ".zip");
-      });
+      type: "blob"
+    })
+        .then(function(content) {
+          saveAs(content, fileName + ".zip");
+        });
   };
 
   var reset_btn = document.getElementById('reset_btn');
