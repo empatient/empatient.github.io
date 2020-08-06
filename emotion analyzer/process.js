@@ -299,25 +299,13 @@ class Plotter {
   };
 
   var joy = function(face) {
-    var r_lip_coord = face.featurePoints[20];
-    var l_lip_coord = face.featurePoints[24];
-    var u_lip_coord = face.featurePoints[28];
-    var b_lip_coord = face.featurePoints[29];
-    var mouth_width = Math.sqrt(Math.pow((r_lip_coord.x - l_lip_coord.x), 2) + Math.pow((r_lip_coord.y - l_lip_coord.y), 2));
-    var mouth_height = Math.sqrt(Math.pow((u_lip_coord.x - b_lip_coord.x), 2) + Math.pow((u_lip_coord.y - b_lip_coord.y), 2));
     return face.emotions.joy;
   }
 
   var engagement = function(face) {
-    var r_lip_coord = face.featurePoints[20];
-    var l_lip_coord = face.featurePoints[24];
-    var r_eye_coord = face.featurePoints[16];
-    var l_eye_coord = face.featurePoints[19];
-    var mouth_slope = (r_lip_coord.y - l_lip_coord.y) / (r_lip_coord.x - l_lip_coord.x);
-    var eye_slope = (r_eye_coord.y - l_eye_coord.y) / (r_eye_coord.x - l_eye_coord.x);
-    var mouth_eye_angle = (Math.atan2((1 - mouth_slope * eye_slope), (mouth_slope - eye_slope)) - Math.PI / 2) * (180 / Math.PI);
+   
 
-    return face.emotions.engagement;
+  return face.emotions.engagement;
   }
 
   var faceAngle = function(face) {
