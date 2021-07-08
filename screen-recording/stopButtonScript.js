@@ -1,4 +1,3 @@
-document.getElementById("stopSDK").addEventListener("click", onStop);
 
 //function executes when the Stop button is pushed.
 function onStop() {
@@ -7,3 +6,5 @@ function onStop() {
       detector.stop();
     }
   };
+
+document.getElementById("stop").addEventListener("click", onStop);
